@@ -5,14 +5,16 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.List;
+
 
 @Entity
 public class Advisor {
 
     @Id
     @GeneratedValue()
-    private long advisorId;
+    private Long advisorId;
 
     @Column(nullable = false)
     private String firstName;
