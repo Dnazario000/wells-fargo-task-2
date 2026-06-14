@@ -1,37 +1,43 @@
 package com.wellsfargo.counselor.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
-public class Security {
+public class PortfolioSecurity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue()
     private Long securityId;
 
     @ManyToOne
+    @JoinColumn(name = "portfolio_id", nullable = false)
     private Portfolio portfolio;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String category;
 
-    @Column
+    @Column(nullable = false)
     private Double purchasePrice;
 
-    @Column
+    @Column(nullable = false)
     private Date purchaseDate;
 
-    @Column
+    @Column(nullable = false)
     private Integer quantity;
 
-    public Security() {
+    protected PortfolioSecurity() {
     }
 
-    public Security(Portfolio portfolio, String name, String category, Double purchasePrice, Date purchaseDate, Integer quantity) {
+    public PortfolioSecurity(Portfolio portfolio, String name, String category, Double purchasePrice, Date purchaseDate, Integer quantity) {
         this.portfolio = portfolio;
         this.name = name;
         this.category = category;
@@ -67,27 +73,27 @@ public class Security {
     public void setCategory(String category) {
         this.category = category;
     }
-    
+
     public Double getPurchasePrice() {
         return purchasePrice;
     }
-    
+
     public void setPurchasePrice(Double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
-    
+
     public Date getPurchaseDate() {
         return purchaseDate;
     }
-    
+
     public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
-    
+
     public Integer getQuantity() {
         return quantity;
     }
-    
+
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
